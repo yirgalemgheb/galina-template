@@ -54,8 +54,8 @@ public class AppBasics {
 	/**
 	 * Overloads convertStringtoInt method for when no integer range is provided
 	 *
-	 * @param String
-	 *            input - expected to be able to parse int from this string
+	 * @param input
+	 *            - string expected to be able to parse int from this string
 	 * @return integer parsed from String input
 	 */
 	public static int convertStringtoInt(String input) {
@@ -66,8 +66,8 @@ public class AppBasics {
 	 * Returns integer parsed from string and handles exceptions when the
 	 * integer is not in accepted range or string cannot be parsed
 	 *
-	 * @param String
-	 *            input - expected to be able to parse int from this string
+	 * @param input
+	 *            - String expected to be able to parse int from this string
 	 * @return integer parsed from String input
 	 */
 	public static int convertStringtoInt(String input, int min, int max) {
