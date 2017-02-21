@@ -1,4 +1,4 @@
-package com.sqa.gy;
+package com.sqa.gy.helpers;
 
 import java.util.concurrent.*;
 
@@ -17,7 +17,7 @@ public class BasicTest {
 
 	/**
 	 * Constructs instance of BasicTest Initiates logger
-	 * 
+	 *
 	 * @param baseUrl
 	 */
 	public BasicTest(String baseUrl) {
@@ -34,7 +34,7 @@ public class BasicTest {
 
 	/**
 	 * getter for baseUrl
-	 * 
+	 *
 	 * @return baseUrl
 	 */
 	public String getBaseUrl() {
@@ -43,7 +43,7 @@ public class BasicTest {
 
 	/**
 	 * getter for driver
-	 * 
+	 *
 	 * @return driver
 	 */
 	public WebDriver getDriver() {
@@ -52,7 +52,7 @@ public class BasicTest {
 
 	/**
 	 * getter for logger
-	 * 
+	 *
 	 * @return logger
 	 */
 	public Logger getLogger() {
@@ -61,7 +61,7 @@ public class BasicTest {
 
 	/**
 	 * setter for baseURL
-	 * 
+	 *
 	 * @param baseUrl
 	 */
 	public void setBaseUrl(String baseUrl) {
@@ -70,7 +70,7 @@ public class BasicTest {
 
 	/**
 	 * setter for driver
-	 * 
+	 *
 	 * @param driver
 	 */
 	public void setDriver(WebDriver driver) {
@@ -79,7 +79,7 @@ public class BasicTest {
 
 	/**
 	 * setter for logger
-	 * 
+	 *
 	 * @param logger
 	 */
 	public void setLogger(Logger logger) {
@@ -89,7 +89,8 @@ public class BasicTest {
 	/**
 	 * sets up Chrome Driver before each test - when enabled
 	 */
-	@BeforeMethod // (enabled = false)
+	@BeforeMethod(groups = "chrome")
+	// (enabled = false)
 	public void setUpChrome() {
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
 		this.driver = new ChromeDriver();
@@ -100,7 +101,8 @@ public class BasicTest {
 	/**
 	 * sets up Firefox Driver before each test - when enabled
 	 */
-	@BeforeMethod(enabled = false)
+	@BeforeMethod(groups = "firefox")
+	// (enabled = false)
 	public void setUpFirefox() {
 		this.driver = new FirefoxDriver();
 		this.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
