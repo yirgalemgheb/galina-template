@@ -8,7 +8,7 @@ import org.openqa.selenium.support.*;
  * Parent class for all page objects. Creates instance of page and accesses
  * AutoBasics to take screenshots
  */
-public class BasicPage {
+public class BasicPage extends Core {
 
 	@SuppressWarnings("javadoc")
 	public Logger logger;
@@ -22,12 +22,17 @@ public class BasicPage {
 	public BasicPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		this.logger = Logger.getLogger(BasicPage.class); // you pass in the
-															// class type. you
-															// could put in a
-															// string, but
-															// unique to the
-															// THIS logger.
+		this.logger = Logger.getLogger(BasicPage.class);
+	}
+
+	@Override
+	public WebDriver getDriver() {
+		return this.driver;
+	}
+
+	@Override
+	public Logger getLog() {
+		return this.logger;
 	}
 
 	/**
