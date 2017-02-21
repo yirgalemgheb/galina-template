@@ -23,7 +23,7 @@ public class DataHelper {
 	 * displays the data passed in a 2-d object array
 	 *
 	 * @param data
-	 *            array whose data is it be displaed
+	 *            array whose data is it be displayed
 	 */
 	public static void displayData(Object[][] data) {
 		// Display the data Object[][] to console using the logger.
@@ -58,9 +58,6 @@ public class DataHelper {
 	public static Object[][] evalDatabaseTable(String driverClassString, String databaseStringUrl, String username,
 			String password, String tableName) throws ClassNotFoundException, SQLException, DataTypesMismatchException,
 			DataTypesCountException, DataTypesTypeException {
-		// Method calls overloaded method which sets no offset for col or row in
-		// the case you wanted to offset your data retrieved based on a column
-		// or row offset
 		return evalDatabaseTable(driverClassString, databaseStringUrl, username, password, tableName, "*", 0, 0, null);
 	}
 
@@ -96,7 +93,7 @@ public class DataHelper {
 			DataTypesTypeException {
 		// 2D Array of Objects to hold data object to be returned
 		Object[][] myData;
-		ArrayList<Object> myArrayData = new ArrayList<Object>();
+		ArrayList<Object> myArrayData = new ArrayList<>();
 		Class.forName(driverClassString);
 		Connection dbconn = DriverManager.getConnection(databaseStringUrl, username, password);
 		Statement stmt = dbconn.createStatement();
@@ -190,7 +187,7 @@ public class DataHelper {
 	}
 
 	/**
-	 * Overloaded method to read text file in various format styles.
+	 * Overloaded method to read text file of various formats
 	 *
 	 * @param fileLocation
 	 * @param fileName
@@ -202,8 +199,8 @@ public class DataHelper {
 	}
 
 	/**
-	 * Method to read text file in various format styles and also allows
-	 * DataTypes to be specified
+	 * Method to read text file of various formats and also allows DataTypes to
+	 * be specified
 	 *
 	 * @param fileLocation
 	 * @param fileName
@@ -308,7 +305,7 @@ public class DataHelper {
 	 * @return
 	 */
 	private static ArrayList<Object> getNewExcelFileResults(String fileLocation, String fileName, Boolean hasLabels) {
-		ArrayList<Object> results = new ArrayList<Object>();
+		ArrayList<Object> results = new ArrayList<>();
 		try {
 			String fullFilePath = fileLocation + fileName;
 			InputStream newExcelFormatFile = new FileInputStream(new File(fullFilePath));
@@ -319,7 +316,7 @@ public class DataHelper {
 				rowIterator.next();
 			}
 			while (rowIterator.hasNext()) {
-				ArrayList<Object> rowData = new ArrayList<Object>();
+				ArrayList<Object> rowData = new ArrayList<>();
 				Row row = rowIterator.next();
 				Iterator<Cell> cellIterator = row.cellIterator();
 				while (cellIterator.hasNext()) {
@@ -365,7 +362,7 @@ public class DataHelper {
 	 * @return
 	 */
 	private static ArrayList<Object> getOldExcelFileResults(String fileLocation, String fileName, Boolean hasLabels) {
-		ArrayList<Object> results = new ArrayList<Object>();
+		ArrayList<Object> results = new ArrayList<>();
 		try {
 			String fullFilePath = fileLocation + fileName;
 			InputStream newExcelFormatFile = new FileInputStream(new File(fullFilePath));
@@ -376,7 +373,7 @@ public class DataHelper {
 				rowIterator.next();
 			}
 			while (rowIterator.hasNext()) {
-				ArrayList<Object> rowData = new ArrayList<Object>();
+				ArrayList<Object> rowData = new ArrayList<>();
 				Row row = rowIterator.next();
 				Iterator<Cell> cellIterator = row.cellIterator();
 				while (cellIterator.hasNext()) {
@@ -423,7 +420,7 @@ public class DataHelper {
 	 */
 	private static ArrayList<String> openFileAndCollectData(String fileLocation, String fileName) {
 		String fullFilePath = fileLocation + fileName;
-		ArrayList<String> dataLines = new ArrayList<String>();
+		ArrayList<String> dataLines = new ArrayList<>();
 		try {
 			FileReader fileReader = new FileReader(fullFilePath);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -450,7 +447,7 @@ public class DataHelper {
 	 * @return
 	 */
 	private static Object[][] parseCSVData(ArrayList<String> lines, boolean hasLabels, DataType[] dataTypes) {
-		ArrayList<Object> results = new ArrayList<Object>();
+		ArrayList<Object> results = new ArrayList<>();
 		if (hasLabels) {
 			lines.remove(0);
 		}
@@ -458,7 +455,7 @@ public class DataHelper {
 		Pattern r = Pattern.compile(pattern);
 		for (int i = 0; i < lines.size(); i++) {
 			int curDataType = 0;
-			ArrayList<Object> curMatches = new ArrayList<Object>();
+			ArrayList<Object> curMatches = new ArrayList<>();
 			Matcher m = r.matcher(lines.get(i));
 			while (m.find()) {
 				if (dataTypes.length > 0) {

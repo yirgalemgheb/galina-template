@@ -12,7 +12,6 @@ public class BasicPage {
 
 	@SuppressWarnings("javadoc")
 	public Logger logger;
-
 	private WebDriver driver;
 
 	/**
@@ -32,12 +31,36 @@ public class BasicPage {
 	}
 
 	/**
+	 * Clear text field and sends keys string into the field
+	 *
+	 * @param value
+	 *            String to be entered into field
+	 * @param element
+	 *            for the text field
+	 */
+	protected void clearAndSendKeysToField(String value, WebElement element) {
+		element.clear();
+		element.sendKeys(value);
+	}
+
+	/**
+	 * Calls AutoBasics method to Verify that needed element is present
+	 *
+	 * @param by
+	 *            element to be located
+	 * @return boolean - if element was found
+	 */
+	protected boolean isElementPresent(By by) {
+		return AutoBasics.isElementPresent(this.driver, by);
+	}
+
+	/**
 	 * Overloads method - if user does not supply filename for screenshot Calls
 	 * AutoBasics method to take screenshot
 	 *
 	 * @return boolean if ss was successful
 	 */
-	public boolean takeScreenshot() {
+	protected boolean takeScreenshot() {
 		return AutoBasics.takesScreenshot(this.driver, "screenshot");
 	}
 
@@ -48,8 +71,7 @@ public class BasicPage {
 	 *            to be given to screenshot file
 	 * @return boolean if ss was successful
 	 */
-	public boolean takeScreenshot(String filename) {
+	protected boolean takeScreenshot(String filename) {
 		return AutoBasics.takesScreenshot(this.driver, filename);
 	}
-
 }
